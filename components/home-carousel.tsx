@@ -63,7 +63,7 @@ export function HomeCarousel() {
 
   return (
     <div className={`relative w-full mx-auto max-w-full ${getFontClass()}`}>
-      <div className="relative w-full h-[45vh] md:h-[85vh] bg-muted overflow-hidden">
+      <div className="relative w-full h-[55vh] md:h-[85vh] bg-muted overflow-hidden">
         <Swiper
           ref={swiperRef}
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -107,13 +107,10 @@ export function HomeCarousel() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40 flex items-center justify-center">
                     <div className="text-center text-white max-w-4xl px-4 sm:px-8">
-                      {/* <div className="mb-6 flex justify-center w-fit items-center bg-white rounded-full opacity-90">
-                        <Icon className="h-12 w-12  text-[#248406] drop-shadow-lg" />
-                      </div> */}
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-balance leading-tight drop-shadow-lg">
+                      <h1 className="text-xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-balance leading-tight drop-shadow-lg">
                         {t(slide.titleKey)}
                       </h1>
-                      <p className="text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto drop-shadow-md mb-8">
+                      <p className="text-sm sm:text-xl leading-relaxed max-w-3xl mx-auto drop-shadow-md mb-8">
                         {t(slide.descriptionKey)}
                       </p>
                       <Button

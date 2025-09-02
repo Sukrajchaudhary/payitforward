@@ -10,7 +10,7 @@ export function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Saroj Raj Dhamala",
       role: "Environmental Volunteer",
       content:
         "Volunteering through this platform has been life-changing. I've met amazing people and made a real difference in my community.",

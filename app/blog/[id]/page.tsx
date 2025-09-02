@@ -58,7 +58,7 @@ const blogPosts = [
       
       <p>The most rewarding aspect has been witnessing the transformation in local communities. Fishermen report seeing more marine life, and tourism has increased as beaches become cleaner and more attractive.</p>
     `,
-    author: "David Chen",
+    author: "Saroj Raj Dhamala",
     date: "2024-01-10",
     image: "/ocean-cleanup-volunteers.png",
     category: "Environment",
@@ -85,7 +85,7 @@ const blogPosts = [
       
       <p>The emotional impact has been profound. Many participants have reconnected with distant family members, while others have discovered new hobbies and interests online. The confidence boost has been remarkable to witness.</p>
     `,
-    author: "Sarah Johnson",
+    author: "Saroj Raj Dhamala",
     date: "2024-01-05",
     image: "/teaching-seniors-technology.png",
     category: "Community",
