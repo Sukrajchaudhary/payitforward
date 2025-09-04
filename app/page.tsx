@@ -8,6 +8,7 @@ import { OpportunitiesSection } from "@/components/opportunities-section"
 import { ContactUsSection } from "@/components/contact-us-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Footer } from "@/components/footer"
+import Gallary from "@/components/gallary/Gallary"
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
           <BlogsSection />
           <AboutUsSection />
           <FounderSection />
+          <Gallary/>
           <RecentActivitiesSection />
           <OpportunitiesSection />
           <ContactUsSection />

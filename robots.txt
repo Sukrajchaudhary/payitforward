@@ -1,0 +1,6 @@
+User-agent: Googlebot
+Allow: /public/
+Disallow: /private/
+
+User-agent: Bingbot
+Disallow: /

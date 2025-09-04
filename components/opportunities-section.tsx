@@ -17,7 +17,7 @@ export function OpportunitiesSection() {
       location: "Kathmandu, Nepal",
       date: "March 15, 2025",
       participants: 12,
-      image: "/community-garden-with-volunteers-planting-vegetabl.png",
+      image: "/gallary/2.jpeg",
       description: "Help create a sustainable community garden that will provide fresh produce for local families.",
     },
     {
@@ -27,7 +27,7 @@ export function OpportunitiesSection() {
       location: "Tokyo, Japan",
       date: "March 20, 2025",
       participants: 8,
-      image: "/teacher-helping-children-learn-in-classroom.png",
+      image: "/gallary/6.jpeg",
       description: "Teach English to children and adults in underserved communities.",
     },
     {
@@ -37,7 +37,7 @@ export function OpportunitiesSection() {
       location: "Remote/Online",
       date: "Ongoing",
       participants: 25,
-      image: "/healthcare-volunteers-helping-patients.png",
+      image: "/gallary/11.jpeg",
       description: "Provide administrative support and patient care assistance to healthcare facilities.",
     },
   ]
