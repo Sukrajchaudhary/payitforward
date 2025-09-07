@@ -1,18 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true, // Ignore eslint during builds
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Ignore TypeScript build errors
   },
   images: {
-    unoptimized: true,
+    unoptimized: true, // Disable image optimization (useful for static hosting)
   },
   experimental: {
-    swcMinify: true,
+    swcMinify: true, // Minify with SWC (faster minification)
   },
-  poweredByHeader: false
-}
+  poweredByHeader: false, // Hide the "Powered by Next.js" header
+  trailingSlash: true, // Make sure all URLs end with a trailing slash
+  reactStrictMode: true, // Enable React Strict Mode for better error handling
 
-export default nextConfig
+};
+
+export default nextConfig;

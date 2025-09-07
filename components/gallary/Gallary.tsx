@@ -2,19 +2,19 @@ import React from "react";
 
 const Gallery = () => {
   const data = [
-    { id: "1", imageurl: "/gallary/1.jpeg" },
-    { id: "2", imageurl: "/gallary/2.jpeg" },
-    { id: "3", imageurl: "/gallary/3.jpeg" },
-    { id: "4", imageurl: "/gallary/4.jpeg" },
-    { id: "5", imageurl: "/gallary/5.jpeg" },
-    { id: "6", imageurl: "/gallary/6.jpeg" },
-    { id: "7", imageurl: "/gallary/7.jpeg" },
-    { id: "8", imageurl: "/gallary/8.jpeg" },
-    { id: "9", imageurl: "/gallary/9.jpeg" },
-    { id: "10", imageurl: "/gallary/10.jpeg" },
-    { id: "11", imageurl: "/gallary/11.jpeg" },
-    { id: "12", imageurl: "/gallary/12.jpeg" },
-    { id: "13", imageurl: "/gallary/13.jpeg" },
+    { id: "1", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174157/odftsa6onlo0ulpmkb3u.jpg" },
+    { id: "2", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174157/ni65bolu2kqrqc2lkpcv.jpg" },
+    { id: "3", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174157/ni65bolu2kqrqc2lkpcv.jpg" },
+    { id: "4", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174157/kdutrtjbms87sfhlvuxk.jpg" },
+    { id: "5", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174156/udriuphi1pwb1dtpziy4.jpg" },
+    { id: "6", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174156/egrpkzghk8cibykjlrlq.jpg" },
+    { id: "7", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174156/mflcaacdxpkjma1jvphp.jpg" },
+    { id: "8", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1731929302/urmdshmrq4dzmbddbgzf.png" },
+    { id: "9", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174679/mxhyug2gvglwmjmjjjt0.jpg" },
+    { id: "10", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174735/rgxvmmdlui0yn8emyiqk.jpg" },
+    { id: "11", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174766/kssnbr2mljbbs5sj3bbx.jpg" },
+    { id: "12", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174734/xrdekh1u8u1kzbkjfmo4.jpg" },
+    { id: "13", imageurl: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174736/if4vok1pief4hjumbkms.jpg" },
   ];
 
   // Define bento grid layout patterns for different screen sizes

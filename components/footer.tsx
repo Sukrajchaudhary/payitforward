@@ -28,9 +28,9 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="relative h-14 aspect-square flex items-center justify-center rounded-full overflow-hidden">
+              <div className="relative bg-white p-1 h-14 aspect-square flex items-center justify-center rounded-full overflow-hidden">
                 <Image
-                  src="/logo/logo.png"
+                  src="https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757175190/upialfsbqmhqmr3zb9bp.png"
                   fill
                   alt="logo"
                   unoptimized

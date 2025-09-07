@@ -16,7 +16,7 @@ import 'swiper/css/effect-fade'
 const carouselSlides = [
   {
     id: 1,
-    image: "/images/1.jpeg",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174735/rgxvmmdlui0yn8emyiqk.jpg",
     titleKey: "carousel.slide1.title",
     descriptionKey: "carousel.slide1.description",
     buttonKey: "carousel.slide1.button",
@@ -24,7 +24,7 @@ const carouselSlides = [
   },
   {
     id: 2,
-    image: "/images/2.jpeg",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174678/fdlknwqfytoobvw98efg.jpg",
     titleKey: "carousel.slide2.title",
     descriptionKey: "carousel.slide2.description",
     buttonKey: "carousel.slide2.button",
@@ -32,7 +32,23 @@ const carouselSlides = [
   },
   {
     id: 3,
-    image: "/images/3.jpeg",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174156/egrpkzghk8cibykjlrlq.jpg",
+    titleKey: "carousel.slide3.title",
+    descriptionKey: "carousel.slide3.description",
+    buttonKey: "carousel.slide3.button",
+    icon: Users,
+  },
+  {
+    id: 4,
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174678/ynpbh3ze707c4o8kmky5.jpg",
+    titleKey: "carousel.slide3.title",
+    descriptionKey: "carousel.slide3.description",
+    buttonKey: "carousel.slide3.button",
+    icon: Users,
+  },
+  {
+    id: 5,
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174755/htpuwssyrf8sc1cn8suu.jpg",
     titleKey: "carousel.slide3.title",
     descriptionKey: "carousel.slide3.description",
     buttonKey: "carousel.slide3.button",

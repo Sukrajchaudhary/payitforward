@@ -17,7 +17,7 @@ export function OpportunitiesSection() {
       location: "Kathmandu, Nepal",
       date: "March 15, 2025",
       participants: 12,
-      image: "/gallary/2.jpeg",
+      image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174755/htpuwssyrf8sc1cn8suu.jpg",
       description: "Help create a sustainable community garden that will provide fresh produce for local families.",
     },
     {
@@ -27,7 +27,7 @@ export function OpportunitiesSection() {
       location: "Tokyo, Japan",
       date: "March 20, 2025",
       participants: 8,
-      image: "/gallary/6.jpeg",
+      image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174734/xrdekh1u8u1kzbkjfmo4.jpg",
       description: "Teach English to children and adults in underserved communities.",
     },
     {
@@ -37,7 +37,7 @@ export function OpportunitiesSection() {
       location: "Remote/Online",
       date: "Ongoing",
       participants: 25,
-      image: "/gallary/11.jpeg",
+      image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174678/ynpbh3ze707c4o8kmky5.jpg",
       description: "Provide administrative support and patient care assistance to healthcare facilities.",
     },
   ]

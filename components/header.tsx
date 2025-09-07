@@ -42,7 +42,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="relative h-14 aspect-square flex items-center justify-center rounded-full overflow-hidden">
-              <Image src="/logo/logo.png" fill alt="logo" unoptimized loading="lazy" />
+              <Image src="https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757175190/upialfsbqmhqmr3zb9bp.png" fill alt="logo" unoptimized loading="lazy" />
             </div>
             {/* <span className="text-xl font-bold text-foreground">VolunteerHub</span> */}
           </Link>

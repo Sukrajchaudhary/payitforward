@@ -57,7 +57,7 @@ export function AboutUsSection() {
 
           <div className="relative w-full max-w-full">
             <Image
-              src="/images/kh.jpeg"
+              src="https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174708/i4rn89fnevemgdibs82l.jpg"
               alt="About us"
               width={600}
               height={400}

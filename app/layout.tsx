@@ -32,7 +32,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "VolunteerHub - Join Us to Make a Difference Through Volunteering",
+  title: "payitforwardjpn- Join Us to Make a Difference Through Volunteering",
   description:
     "We help you make a positive impact by connecting you with meaningful volunteering opportunities. Join us in supporting students, homeless people, and communities in Nepal and Japan. Together, we can create real change.",
   keywords:
@@ -57,8 +57,8 @@ export const metadata: Metadata = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "VolunteerHub",
-  alternateName: "Pay It Forward JPN",
+  name: "payit",
+  alternateName: ["Pay It Forward JPN", "Payit", "Pay It Forward Nepal","nepal japan","help japan","help people"],
   url: "https://payitforwardjpn.com/",
   logo: "https://payitforwardjpn.com/logo.png",
   description:
@@ -85,6 +85,7 @@ const websiteSchema = {
     "Student Support",
     "Homelessness Support",
     "Social Impact",
+    "old people support"
   ],
 };
 
@@ -108,7 +109,7 @@ export default function RootLayout({
       <body
         className={`${workSans.variable} ${notoSansDevanagari.variable} ${notoSansJP.variable} antialiased`}
       >
-        <Suspense fallback={<Fallback/>}>
+        <Suspense fallback={<Fallback />}>
           <LanguageProvider>
             <TopNavbar />
             <Header />

@@ -14,7 +14,7 @@ const blogPosts = [
     excerpt: "Our volunteers helped construct a new school building that will serve 200+ children in a remote village.",
     author: "Saroj Raj Dhamala",
     date: "2024-01-15",
-    image: "/images/v1.jpeg",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174679/mxhyug2gvglwmjmjjjt0.jpg",
     category: "Education",
   },
   {
@@ -23,7 +23,7 @@ const blogPosts = [
     excerpt: "Together with local communities, we removed over 2 tons of plastic waste from coastal areas.",
     author: "Saroj Raj Dhamala",
     date: "2024-01-10",
-    image: "/images/v2.jpeg",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174766/kssnbr2mljbbs5sj3bbx.jpg",
     category: "Environment",
   },
   {
@@ -32,7 +32,7 @@ const blogPosts = [
     excerpt: "Our tech volunteers helped 150+ elderly residents learn to use smartphones and connect with family.",
     author: "Saroj Raj Dhamala",
     date: "2024-01-05",
-    image: "/images/v3.jpeg",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174156/udriuphi1pwb1dtpziy4.jpg",
     category: "Community",
   },
 ]
