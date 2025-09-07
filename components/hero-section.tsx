@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/hooks/use-language"
 import { ArrowRight, Play } from "lucide-react"
+import Link from "next/link"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, Autoplay } from "swiper/modules"
 import "swiper/css"
@@ -64,15 +65,19 @@ export function HeroSection() {
 
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                    <Button size="lg" className="gap-2">
-                      {t("findOpportunities")}
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
+                    <Link href="/join-community">
+                      <Button size="lg" className="gap-2">
+                        {t("findOpportunities")}
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
 
-                    <Button variant="outline" size="lg" className="gap-2 bg-transparent">
-                      <Play className="h-4 w-4" />
-                      {t("learnMore")}
-                    </Button>
+                    <Link href="/contact">
+                      <Button variant="outline" size="lg" className="gap-2 bg-transparent">
+                        <Play className="h-4 w-4" />
+                        {t("learnMore")}
+                      </Button>
+                    </Link>
                   </div>
 
                   {/* Hero Image */}

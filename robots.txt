@@ -1,6 +1,19 @@
-User-agent: Googlebot
-Allow: /public/
-Disallow: /private/
+User-agent: *
+Allow: /
 
-User-agent: Bingbot
-Disallow: /
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /volunteer-application
+Allow: /blog
+
+# Sitemap location
+Sitemap: https://payitforwardjpn.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

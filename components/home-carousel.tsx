@@ -63,11 +63,11 @@ export function HomeCarousel() {
   const { t, getFontClass } = useLanguage()
 
   const toggleAutoPlay = () => {
-    if (swiperRef.current && swiperRef.current?.swiper) {
+    if (swiperRef.current && (swiperRef.current as any)?.swiper) {
       if (isAutoPlaying) {
-        swiperRef.current?.swiper.autoplay.stop()
+        (swiperRef.current as any)?.swiper.autoplay.stop()
       } else {
-        swiperRef.current.swiper.autoplay.start()
+        (swiperRef.current as any).swiper.autoplay.start()
       }
       setIsAutoPlaying(!isAutoPlaying)
     }
@@ -79,7 +79,7 @@ export function HomeCarousel() {
 
   return (
     <div className={`relative w-full mx-auto max-w-full ${getFontClass()}`}>
-      <div className="relative w-full h-[55vh] md:h-[85vh] bg-muted overflow-hidden">
+      <div className="relative w-full h-[55vh] md:h-[85vh] bg-muted overflow-hidden group">
         <Swiper
           ref={swiperRef}
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -89,7 +89,7 @@ export function HomeCarousel() {
           fadeEffect={{
             crossFade: true
           }}
-          speed={800}
+          speed={1000}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
@@ -109,7 +109,7 @@ export function HomeCarousel() {
           className="w-full h-full"
           style={{
             '--swiper-theme-color': '#248406',
-          }}
+          } as React.CSSProperties}
         >
           {carouselSlides.map((slide, index) => {
             const Icon = slide.icon
@@ -121,20 +121,24 @@ export function HomeCarousel() {
                     alt={t(slide.titleKey)}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40 flex items-center justify-center">
-                    <div className="text-center text-white max-w-4xl px-4 sm:px-8">
-                      <h1 className="text-xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-balance leading-tight drop-shadow-lg">
-                        {t(slide.titleKey)}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/50 flex items-center justify-center">
+                    <div className="text-center text-white max-w-4xl px-4 sm:px-6 animate-fade-in">
+                      <h1 className=" text-xl md:text-5xl font-semibold mb-2 text-balance leading-tight tracking-tight animate-slide-up">
+                        <span className="bg-gradient-to-r from-white via-white to-gray-200 bg-clip-text text-transparent drop-shadow-lg">
+                          {t(slide.titleKey)}
+                        </span>
                       </h1>
-                      <p className="text-sm sm:text-xl leading-relaxed max-w-3xl mx-auto drop-shadow-md mb-8">
+                      <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-8 font-medium text-gray-100 drop-shadow-md animate-slide-up-delay">
                         {t(slide.descriptionKey)}
                       </p>
                       <Button
                         size="lg"
-                        className="bg-[#248406] hover:bg-[#1a6304] text-white border text-base px-6 py-3 sm:py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl group"
+                        className="bg-gradient-to-r from-[#248406] to-[#2ea043] hover:from-[#1a6304] hover:to-[#248406] text-white border-0 text-sm font-semibold px-6 py-3 sm:px-8 sm:py-4 rounded-full transition-all duration-500 hover:scale-110 shadow-xl hover:shadow-green-500/25 group backdrop-blur-sm animate-slide-up-delay-2"
                       >
-                        {t(slide.buttonKey)} 
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <span className="flex items-center gap-2">
+                          {t(slide.buttonKey)}
+                          <ArrowRight className="h-4 w-4 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" />
+                        </span>
                       </Button>
                     </div>
                   </div>
@@ -148,38 +152,31 @@ export function HomeCarousel() {
         <Button
           variant="outline"
           size="icon"
-          className="swiper-button-prev-custom absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300 hover:scale-110 z-20 opacity-0 group-hover:opacity-100"
+          className="swiper-button-prev-custom absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-10 w-10 sm:h-12 sm:w-12 transition-all duration-500 ease-in-out hover:scale-110 z-50 opacity-0 group-hover:opacity-100"
         >
-          <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
+          <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 transition-transform duration-300" />
         </Button>
         
         <Button
           variant="outline"
           size="icon"
-          className="swiper-button-next-custom absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300 hover:scale-110 z-20 opacity-0 group-hover:opacity-100"
+          className="swiper-button-next-custom absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-10 w-10 sm:h-12 sm:w-12 transition-all duration-500 ease-in-out hover:scale-110 z-50 opacity-0 group-hover:opacity-100"
         >
-          <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
+          <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6 transition-transform duration-300" />
         </Button>
 
         {/* Auto-play Toggle */}
         <Button
           variant="outline"
           size="icon"
-          className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-8 w-8 sm:h-10 sm:w-10 transition-all duration-300 z-20"
+          className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-8 w-8 sm:h-10 sm:w-10 transition-all duration-300 z-50"
           onClick={toggleAutoPlay}
         >
           {isAutoPlaying ? <Pause className="h-3 w-3 sm:h-4 sm:w-4" /> : <Play className="h-3 w-3 sm:h-4 sm:w-4" />}
         </Button>
 
         {/* Custom Pagination */}
-        <div className="swiper-pagination-custom absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20"></div>
-
-        {/* Progress Bar */}
-        {isAutoPlaying && (
-          <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#248406] to-[#2ea043] transition-all duration-[5000ms] ease-linear z-20"
-               style={{ width: `${((activeIndex + 1) / carouselSlides.length) * 100}%` }}>
-          </div>
-        )}
+        <div className="swiper-pagination-custom absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 z-50"></div>
       </div>
 
       <style jsx>{`
@@ -211,6 +208,76 @@ export function HomeCarousel() {
         .swiper-container:hover .swiper-button-prev-custom,
         .swiper-container:hover .swiper-button-next-custom {
           opacity: 1 !important;
+        }
+
+        /* Enhanced fade and slide animations */
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-out;
+        }
+
+        .animate-slide-up {
+          animation: slideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-slide-up-delay {
+          animation: slideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+        }
+
+        .animate-slide-up-delay-2 {
+          animation: slideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        /* Enhanced Swiper fade effect */
+        .swiper-slide-active .animate-fade-in,
+        .swiper-slide-active .animate-slide-up,
+        .swiper-slide-active .animate-slide-up-delay,
+        .swiper-slide-active .animate-slide-up-delay-2 {
+          animation-play-state: running;
+        }
+
+        /* Text rendering improvements */
+        h1 {
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Enhanced button hover effects */
+        .group:hover .group-hover\\:translate-x-1 {
+          transform: translateX(4px) scale(1.1);
+        }
+
+        /* Gradient text enhancement */
+        .bg-clip-text {
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+
+        /* Improved shadow effects */
+        .drop-shadow-2xl {
+          filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.25));
         }
       `}</style>
     </div>
