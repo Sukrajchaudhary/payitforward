@@ -6,6 +6,8 @@ import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import { Heart, Users, Globe, Play, Pause, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/hooks/use-language"
+import Image from "next/image"
+import { AspectRatio } from "@/components/ui/aspect-ratio" // Make sure to import AspectRatio
 
 // Import Swiper styles
 import 'swiper/css'
@@ -63,23 +65,23 @@ export function HomeCarousel() {
   const { t, getFontClass } = useLanguage()
 
   const toggleAutoPlay = () => {
-    if (swiperRef.current && swiperRef.current?.swiper) {
+    if (swiperRef.current && (swiperRef.current as any)?.swiper) {
       if (isAutoPlaying) {
-        swiperRef.current?.swiper.autoplay.stop()
+        (swiperRef.current as any)?.swiper.autoplay.stop()
       } else {
-        swiperRef.current.swiper.autoplay.start()
+        (swiperRef.current as any).swiper.autoplay.start()
       }
       setIsAutoPlaying(!isAutoPlaying)
     }
   }
 
-  const handleSlideChange = (swiper:any) => {
+  const handleSlideChange = (swiper: any) => {
     setActiveIndex(swiper.activeIndex)
   }
 
   return (
     <div className={`relative w-full mx-auto max-w-full ${getFontClass()}`}>
-      <div className="relative w-full h-[55vh] md:h-[85vh] bg-muted overflow-hidden">
+      <div className="relative w-full h-[35vh]  md:h-[80vh] bg-muted overflow-hidden group">
         <Swiper
           ref={swiperRef}
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -89,7 +91,7 @@ export function HomeCarousel() {
           fadeEffect={{
             crossFade: true
           }}
-          speed={800}
+          speed={1000}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
@@ -109,35 +111,20 @@ export function HomeCarousel() {
           className="w-full h-full"
           style={{
             '--swiper-theme-color': '#248406',
-          }}
+          } as React.CSSProperties}
         >
           {carouselSlides.map((slide, index) => {
-            const Icon = slide.icon
             return (
               <SwiperSlide key={slide.id}>
-                <div className="relative w-full h-full">
-                  <img
+                <div className="relative aspect-square h-full w-full">
+                  <Image
                     src={slide.image || "/placeholder.svg"}
                     alt={t(slide.titleKey)}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+                    priority={index === 0}
+                    sizes="100vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/40 flex items-center justify-center">
-                    <div className="text-center text-white max-w-4xl px-4 sm:px-8">
-                      <h1 className="text-xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-balance leading-tight drop-shadow-lg">
-                        {t(slide.titleKey)}
-                      </h1>
-                      <p className="text-sm sm:text-xl leading-relaxed max-w-3xl mx-auto drop-shadow-md mb-8">
-                        {t(slide.descriptionKey)}
-                      </p>
-                      <Button
-                        size="lg"
-                        className="bg-[#248406] hover:bg-[#1a6304] text-white border text-base px-6 py-3 sm:py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-xl group"
-                      >
-                        {t(slide.buttonKey)} 
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </div>
-                  </div>
                 </div>
               </SwiperSlide>
             )
@@ -148,71 +135,26 @@ export function HomeCarousel() {
         <Button
           variant="outline"
           size="icon"
-          className="swiper-button-prev-custom absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300 hover:scale-110 z-20 opacity-0 group-hover:opacity-100"
+          className="swiper-button-prev-custom absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 transition-all duration-500 ease-in-out hover:scale-110 z-10 opacity-0 group-hover:opacity-100"
         >
-          <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
+          <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4 md:h-6 md:w-6 transition-transform duration-300" />
         </Button>
         
         <Button
           variant="outline"
           size="icon"
-          className="swiper-button-next-custom absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-10 w-10 sm:h-12 sm:w-12 transition-all duration-300 hover:scale-110 z-20 opacity-0 group-hover:opacity-100"
+          className="swiper-button-next-custom absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 transition-all duration-500 ease-in-out hover:scale-110 z-10 opacity-0 group-hover:opacity-100"
         >
-          <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
+          <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-6 md:w-6 transition-transform duration-300" />
         </Button>
 
-        {/* Auto-play Toggle */}
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full h-8 w-8 sm:h-10 sm:w-10 transition-all duration-300 z-20"
-          onClick={toggleAutoPlay}
-        >
-          {isAutoPlaying ? <Pause className="h-3 w-3 sm:h-4 sm:w-4" /> : <Play className="h-3 w-3 sm:h-4 sm:w-4" />}
-        </Button>
+       
 
         {/* Custom Pagination */}
-        <div className="swiper-pagination-custom absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20"></div>
-
-        {/* Progress Bar */}
-        {isAutoPlaying && (
-          <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#248406] to-[#2ea043] transition-all duration-[5000ms] ease-linear z-20"
-               style={{ width: `${((activeIndex + 1) / carouselSlides.length) * 100}%` }}>
-          </div>
-        )}
+        <div className="swiper-pagination-custom absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex space-x-1 sm:space-x-2 md:space-x-3 z-50"></div>
       </div>
 
-      <style jsx>{`
-        .swiper-pagination-bullet-custom {
-          width: 24px !important;
-          height: 4px !important;
-          border-radius: 2px !important;
-          background: rgba(255, 255, 255, 0.4) !important;
-          opacity: 1 !important;
-          transition: all 0.3s ease !important;
-          cursor: pointer !important;
-        }
-        
-        .swiper-pagination-bullet-custom:hover {
-          background: rgba(255, 255, 255, 0.6) !important;
-        }
-        
-        .swiper-pagination-bullet-active-custom {
-          background: white !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-        }
-
-        @media (min-width: 640px) {
-          .swiper-pagination-bullet-custom {
-            width: 32px !important;
-          }
-        }
-
-        .swiper-container:hover .swiper-button-prev-custom,
-        .swiper-container:hover .swiper-button-next-custom {
-          opacity: 1 !important;
-        }
-      `}</style>
+     
     </div>
   )
 }

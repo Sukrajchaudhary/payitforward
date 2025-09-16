@@ -10,6 +10,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
   MapPin,
   Phone,
   Mail,
@@ -17,21 +25,75 @@ import {
   Send,
   MessageSquare,
   CheckCircle,
+  Loader2,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { toast } from "sonner";
+
+// Zod schema for form validation
+const contactFormSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name must be less than 50 characters")
+    .regex(/^[a-zA-Z\s]+$/, "Name can only contain letters and spaces"),
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
+  subject: z
+    .string()
+    .min(5, "Subject must be at least 5 characters")
+    .max(100, "Subject must be less than 100 characters"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(1000, "Message must be less than 1000 characters"),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export function ContactUsSection() {
   const { t } = useLanguage();
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: ContactFormValues) => {
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      
+      toast.success("Message sent successfully! We'll get back to you soon.", {
+        description: "Thank you for reaching out to us.",
+        duration: 5000,
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.", {
+        description: "There was an error sending your message.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section className="py-12">
+    <section className="py-12 px-3">
       <div className="max-w-[1400px] mx-auto">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
@@ -61,85 +123,111 @@ export function ContactUsSection() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2 group">
-                      <Label
-                        htmlFor="contactName"
-                        className="text-sm font-semibold text-gray-700 group-focus-within:text-emerald-600 transition-colors"
-                      >
-                        {t("contactUs.yourName")}
-                      </Label>
-                      <Input
-                        id="contactName"
-                        placeholder="Enter your name"
-                        className="h-10 text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg"
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="text-sm font-semibold text-gray-700">
+                              {t("contactUs.yourName")}
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Enter your name"
+                                className="h-11 text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-xs text-red-500" />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="text-sm font-semibold text-gray-700">
+                              {t("contactUs.yourEmail")}
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                type="email"
+                                placeholder="Enter your email"
+                                className="h-11 text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage className="text-xs text-red-500" />
+                          </FormItem>
+                        )}
                       />
                     </div>
-                    <div className="space-y-2 group">
-                      <Label
-                        htmlFor="contactEmail"
-                        className="text-sm font-semibold text-gray-700 group-focus-within:text-emerald-600 transition-colors"
-                      >
-                        {t("contactUs.yourEmail")}
-                      </Label>
-                      <Input
-                        id="contactEmail"
-                        type="email"
-                        placeholder="Enter your email"
-                        className="h-10 text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg"
-                      />
-                    </div>
-                  </div>
 
-                  <div className="space-y-2 group">
-                    <Label
-                      htmlFor="subject"
-                      className="text-sm font-semibold text-gray-700 group-focus-within:text-emerald-600 transition-colors"
-                    >
-                      {t("contactUs.subject")}
-                    </Label>
-                    <Input
-                      id="subject"
-                      placeholder="Enter subject"
-                      className="h-10 text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg"
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem className="space-y-2">
+                          <FormLabel className="text-sm font-semibold text-gray-700">
+                            {t("contactUs.subject")}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter subject"
+                              className="h-11 text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage className="text-xs text-red-500" />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <div className="space-y-2 group">
-                    <Label
-                      htmlFor="contactMessage"
-                      className="text-sm font-semibold text-gray-700 group-focus-within:text-emerald-600 transition-colors"
-                    >
-                      {t("contactUs.yourMessage")}
-                    </Label>
-                    <Textarea
-                      id="contactMessage"
-                      placeholder="Enter your message"
-                      rows={4}
-                      className="text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg resize-none"
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem className="space-y-2">
+                          <FormLabel className="text-sm font-semibold text-gray-700">
+                            {t("contactUs.yourMessage")}
+                          </FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="Enter your message"
+                              rows={5}
+                              className="text-sm border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 transition-all duration-300 rounded-lg resize-none"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage className="text-xs text-red-500" />
+                        </FormItem>
+                      )}
                     />
-                  </div>
 
-                  <Button
-                    type="submit"
-                    size="lg"
-                    disabled={isSubmitted}
-                    className="w-fit rounded-4xl h-12 text-base bg-emerald-600 hover:bg-emerald-700 transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    {isSubmitted ? (
-                      <>
-                        <CheckCircle className="mr-2 h-5 w-5 animate-bounce" />
-                        Message Sent!
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2 h-5 w-5" />
-                        {t("contactUs.sendMessage")}
-                      </>
-                    )}
-                  </Button>
-                </form>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      disabled={isSubmitting}
+                      className="w-fit rounded-full h-12 text-base bg-emerald-600 hover:bg-emerald-700 transform hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-5 w-5" />
+                          {t("contactUs.sendMessage")}
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </div>

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -35,13 +36,14 @@
   --sidebar-primary: oklch(0.45 0.15 160); /* Primary emerald for sidebar highlights */
   --sidebar-primary-foreground: oklch(1 0 0); /* White text on primary sidebar elements */
   --sidebar-accent: oklch(0.55 0.15 160); /* Accent emerald for sidebar elements */
-  --sidebar-accent-foreground: oklch(1 0 0); /* White text on sidebar accent elements */
-  --sidebar-border: oklch(0.9 0 0); /* Light gray for sidebar borders */
-  --sidebar-ring: oklch(0.45 0.15 160 / 0.5); /* Soft green for sidebar focus rings */
-  /* Updated font variable from Inter to Work Sans */
-  --font-work-sans: "Work Sans", sans-serif;
-  --font-nepali: "Nepali", serif;
-  --font-japanese: "Japanese", serif;
+  --sidebar-accent-foreground: oklch(1 0 0); 
+  --sidebar-border: oklch(0.9 0 0);
+  --sidebar-ring: oklch(0.45 0.15 160 / 0.5); 
+  
+  /* Font variables with Work Sans as primary */
+  --font-work-sans: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-nepali: "Nepali", "Work Sans", serif;
+  --font-japanese: "Japanese", "Work Sans", serif;
 }
 
 .dark {
@@ -81,7 +83,7 @@
 }
 
 @theme inline {
-  /* Updated font-sans to use Work Sans variable */
+  /* Updated font-sans to use Work Sans as primary font */
   --font-sans: var(--font-work-sans);
   --font-nepali: var(--font-nepali);
   --font-japanese: var(--font-japanese);
@@ -124,6 +126,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Font utility classes */
 .font-nepali {
   font-family: var(--font-nepali), var(--font-sans), sans-serif;
 }
@@ -136,6 +139,33 @@
   font-family: var(--font-work-sans), sans-serif;
 }
 
+/* Work Sans specific font weight utilities */
+.font-work-sans-light {
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 300;
+}
+
+.font-work-sans-regular {
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 400;
+}
+
+.font-work-sans-medium {
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 500;
+}
+
+.font-work-sans-semibold {
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 600;
+}
+
+.font-work-sans-bold {
+  font-family: var(--font-work-sans), sans-serif;
+  font-weight: 700;
+}
+
+/* Swiper styles */
 .swiper {
   width: 100%;
   height: 100%;
@@ -168,7 +198,25 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  /* Global Work Sans application */
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-work-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  /* Apply Work Sans to all text elements globally */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-work-sans), sans-serif;
+  }
+  
+  p, span, div, a, button, input, textarea, label {
+    font-family: var(--font-work-sans), sans-serif;
+  }
+  
+  /* Ensure buttons have proper cursor */
+  button, [role="button"], .cursor-pointer {
+    cursor: pointer;
+    font-family: var(--font-work-sans), sans-serif;
   }
 }

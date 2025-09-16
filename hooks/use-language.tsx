@@ -14,12 +14,14 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language") as Language
     if (savedLanguage && translations[savedLanguage]) {
       setLanguage(savedLanguage)
     }
+    setIsLoaded(true)
   }, [])
 
   const handleSetLanguage = (lang: Language) => {
@@ -60,6 +62,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       default:
         return "font-sans"
     }
+  }
+
+  // Prevent hydration mismatch by not rendering until loaded
+  if (!isLoaded) {
+    return null
   }
 
   return (

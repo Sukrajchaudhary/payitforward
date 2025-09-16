@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Calendar, ArrowLeft, Share2, Heart, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/hooks/use-language"
+import { CommentSection } from "@/components/comment-section"
 
 const blogPosts = [
   {
@@ -31,9 +32,9 @@ const blogPosts = [
       
       <p>The impact has been immediate and profound. Enrollment has increased by 150%, and for the first time, girls' attendance has reached 60% - a significant milestone in this traditional community.</p>
     `,
-    author: "Maria Rodriguez",
+    author: "Saroj Raj Dhamala",
     date: "2024-01-15",
-    image: "/school-construction-in-nepal.png",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174679/mxhyug2gvglwmjmjjjt0.jpg",
     category: "Education",
     readTime: "5 min read",
     likes: 124,
@@ -60,7 +61,7 @@ const blogPosts = [
     `,
     author: "Saroj Raj Dhamala",
     date: "2024-01-10",
-    image: "/ocean-cleanup-volunteers.png",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174766/kssnbr2mljbbs5sj3bbx.jpg",
     category: "Environment",
     readTime: "4 min read",
     likes: 89,
@@ -87,11 +88,65 @@ const blogPosts = [
     `,
     author: "Saroj Raj Dhamala",
     date: "2024-01-05",
-    image: "/teaching-seniors-technology.png",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174156/udriuphi1pwb1dtpziy4.jpg",
     category: "Community",
     readTime: "3 min read",
     likes: 156,
     comments: 24,
+  },
+  {
+    id: "4",
+    title: "Community Garden Initiative",
+    content: `
+      <p>In the heart of downtown Tokyo, we've transformed an abandoned lot into a thriving community garden that brings neighbors together and promotes sustainable living.</p>
+      
+      <p>The initiative started when local residents expressed concern about the lack of green spaces in their urban neighborhood. What began as a small group of gardening enthusiasts has grown into a community-wide movement that celebrates diversity, sustainability, and connection.</p>
+      
+      <p>Our community garden features:</p>
+      <ul>
+        <li>Raised beds for vegetables and herbs</li>
+        <li>Flower gardens that attract pollinators</li>
+        <li>Composting stations for organic waste</li>
+        <li>Educational workshops on sustainable gardening</li>
+        <li>Regular community events and potlucks</li>
+      </ul>
+      
+      <p>The garden has become more than just a place to grow food - it's a hub for cultural exchange, where neighbors from different backgrounds share gardening tips, recipes, and stories. Children learn about where their food comes from, and seniors find purpose and community in tending to the plants.</p>
+    `,
+    author: "Saroj Raj Dhamala",
+    date: "2024-01-20",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174157/t8agquzbkufsmxxgpsr1.jpg",
+    category: "Community",
+    readTime: "4 min read",
+    likes: 98,
+    comments: 15,
+  },
+  {
+    id: "5",
+    title: "Healthcare Support Program",
+    content: `
+      <p>Our medical volunteers have been making a significant impact in underserved communities by providing free healthcare services and health education programs.</p>
+      
+      <p>The healthcare support program was established to address the growing health disparities in rural and urban underserved areas. Our team of medical professionals, including doctors, nurses, and healthcare workers, volunteer their time and expertise to bring quality healthcare to those who need it most.</p>
+      
+      <p>Program services include:</p>
+      <ul>
+        <li>Free health screenings and check-ups</li>
+        <li>Basic medical consultations and treatments</li>
+        <li>Health education workshops on preventive care</li>
+        <li>Mental health support and counseling</li>
+        <li>Medication assistance and prescription support</li>
+      </ul>
+      
+      <p>The program has served over 1,000 patients in the past year, with many receiving life-saving diagnoses and treatments. The impact extends beyond medical care - we've built trust within communities and created a network of support that continues to grow.</p>
+    `,
+    author: "Saroj Raj Dhamala",
+    date: "2024-01-25",
+    image: "https://res.cloudinary.com/dfzg6gkoh/image/upload/v1757174708/i4rn89fnevemgdibs82l.jpg",
+    category: "Healthcare",
+    readTime: "4 min read",
+    likes: 112,
+    comments: 21,
   },
 ]
 
@@ -204,6 +259,9 @@ export default function BlogDetailPage() {
           </Card>
         </div>
       </article>
+
+      {/* Comments Section */}
+      <CommentSection postId={post.id} />
     </div>
   )
 }
